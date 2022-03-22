@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_product_brand_ept_tree" model="ir.ui.view">
+        <field name="name">product.brand.ept.tree</field>
+        <field name="model">product.brand.ept</field>
+        <field name="arch" type="xml">
+            <tree string="Product Brands">
+                <field name="name"/>
+                <field name="website_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_product_brand_ept_form" model="ir.ui.view">
+        <field name="name">product.brand.ept.form</field>
+        <field name="model">product.brand.ept</field>
+        <field name="arch" type="xml">
+            <form string="Product Brand">
+                <sheet>
+                    <group>
+                        <field name="logo" widget="image" class="oe_avatar"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="website_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <notebook>
+                            <page name="product_brand_ept_p1_products" string="Products">
+                                <field name="product_tmpl_ids">
+                                    <tree string="Products">
+                                        <field name="name"/>
+                                        <field name="default_code"/>
+                                        <field name="responsible_id"/>
+                                        <field name="list_price"/>
+                                        <field name="standard_price"/>
+                                        <field name="qty_available"/>
+                                        <field name="virtual_available"/>
+                                        <field name="uom_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                     <field name="message_follower_ids"/>
+                     <field name="activity_ids"/>
+                     <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_product_brand_ept_filter" model="ir.ui.view">
+        <field name="name">product.brand.ept.search</field>
+        <field name="model">product.brand.ept</field>
+        <field name="arch" type="xml">
+            <search string="Search Product's Brand">
+                <field name="name"/>
+                <field name="website_id"/>
+                <field name="product_tmpl_ids"/>
+                <group expand="0" string="Group By">
+                    <filter name="product_brand_ept_group_by_website_id" string="Product"
+                            context="{'group_by': 'website_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_product_brand_ept_window" model="ir.actions.act_window">
+        <field name="name">product.brand.ept.tree</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_product_brand_ept_filter"/>
+        <field name="res_model">product.brand.ept</field>
+        <field name="help" type="html">
+            <p>Opps, There are no records available for the Product Brands.</p>
+        </field>
+    </record>
+
+    <menuitem id="menu_product_brand_ept"
+              name="Product Brands"
+              action="action_product_brand_ept_window"
+              parent="website_sale.menu_product_settings"
+    />
+</odoo>

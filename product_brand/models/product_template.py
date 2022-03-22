@@ -1,0 +1,8 @@
+from odoo import models, fields
+
+
+class ProductTemplateExtended(models.Model):
+    _name = "product.template"
+    _inherit = "product.template"
+
+    product_brand_ept_id = fields.Many2one(comodel_name="product.brand.ept", string="Product Brand", help="Brand of the current product.")

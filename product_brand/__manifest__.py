@@ -4,8 +4,10 @@
     'description': """
         Odoo Ecommerce Exercise 2
     """,
-    'depends': ['base'],
-    'data': [],
+    'depends': ['base', 'mail', 'product', 'website_sale'],
+    'data': ['security/ir.model.access.csv',
+             'views/product_brand_ept.xml',
+             'views/product_template.xml'],
     'demo': [],
     'application': True,
     'installable': True,
