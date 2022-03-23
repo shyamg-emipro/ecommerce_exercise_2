@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="add_new_brand_filter" inherit_id="website_sale.products_attributes">
+        <xpath expr="//form[hasclass('js_attributes')]/ul[hasclass('nav')]" position="inside">
+            <li class="nav-item mb-2">
+                <div>
+                    <strong>Brand</strong>
+                </div>
+                <div class="flex-column">
+                    <t t-foreach="brands" t-as="v">
+                        <div class="custom-control custom-checkbox mb-1">
+                            <input type="checkbox" name="brand" class="custom-control-input"
+                                   t-att-id="'%s' % (v.id)" t-att-value="'%s' % (v.id)"
+                                   t-att-checked="'checked' if v.id in brands_list else None"
+                                   />
+<!--                            <img t-field="v.logo" t-att-src="/web/image/product.brand.ept/#{v.id}/logo" t-att-height="10px" />-->
+                            <label class="custom-control-label font-weight-normal" t-att-for="'%s' % (v.id)"
+                                   t-field="v.name"/>
+                        </div>
+                    </t>
+                </div>
+            </li>
+        </xpath>
+    </template>
+</odoo>
